@@ -12,6 +12,7 @@ const client = new Client({
         GatewayIntentBits.MessageContent
     ]
 });
+client.commands = new Map();
 
 commandHandler(client);
 eventHandler(client);
