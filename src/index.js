@@ -2,6 +2,8 @@ const { Client, GatewayIntentBits } = require("discord.js");
 require("dotenv").config();
 
 const connectMongo = require("./database/mongo");
+const commandHandler = require("./handlers/commandHandler");
+const eventHandler = require("./handlers/eventHandler");
 
 const client = new Client({
     intents: [
@@ -11,9 +13,8 @@ const client = new Client({
     ]
 });
 
-client.once("ready", () => {
-    console.log(`${client.user.tag} is online!`);
-});
+commandHandler(client);
+eventHandler(client);
 
 connectMongo();
 
